@@ -1,0 +1,87 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+use_spacer left
+
+update_interval 1.0
+total_run_times 0
+override_utf8_locale no
+
+mpd_host localhost
+mpd_port 6600
+
+TEXT
+[ 
+
+	${if_mpd_playing} 
+	{
+		"full_text": "[MPD: ${mpd_smart}]",
+		"color": "\#dddddd"
+	},
+	${endif}
+
+	{
+		"full_text": "${wireless_essid wlan0}",
+		"color": "\#4499ff"
+	},
+	
+	${if_up wlan0}
+	{
+		"full_text": "D:${downspeed wlan0}",
+		"color": "\#0055ff"
+	},
+
+	{
+		"full_text": "U:${upspeed wlan0}",
+		"color": "\#0055ff"
+	},
+	${endif}
+
+	${if_up wlan1}
+	{
+		"full_text": "D:${downspeed wlan1}",
+		"color": "\#0055ff"
+	},
+
+	{
+		"full_text": "U:${upspeed wlan1}",
+		"color": "\#0055ff"
+	},
+	${endif}
+
+	${if_up eth0}
+	{
+		"full_text": "D:${downspeed eth0}",
+		"color": "\#0055ff"
+	},
+
+	{
+		"full_text": "U:${upspeed eth0}",
+		"color": "\#0055ff"
+	},
+	${endif}
+
+	{
+		"full_text": "${gw_ip}",
+		"color": "\#4499ff"
+	},
+
+
+	{
+		"full_text": "VOL:${exec amixer get Master | egrep -o "[0-9]+%"}",
+		"color": "\#dddddd"
+	},
+
+	{
+		"full_text": "${battery_short BAT0}",
+		"color": "\#999999"
+	},
+
+	{
+		"full_text": "${time %d %B %Y %R %Z}",
+		"color": "\#dddddd"
+	}
+],
+

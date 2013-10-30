@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# jogjakarta coordinate
+xflux -l -7.797135, 110.368797
